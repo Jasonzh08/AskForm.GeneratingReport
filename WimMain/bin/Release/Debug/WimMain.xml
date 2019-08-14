@@ -1,0 +1,1114 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WimMain</name>
+    </assembly>
+    <members>
+        <member name="T:WimMain.Common.DataRowNameAttribute">
+            <summary>
+            当属性加上此特性，可以和DataTable中的列字段相匹配
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.DataRowNameAttribute.#ctor(System.String)">
+            <summary>
+            对应的列名称
+            </summary>
+            <param name="dtName"></param>
+        </member>
+        <member name="M:WimMain.Common.DataRowNameAttribute.#ctor(System.String[])">
+            <summary>
+            对应的列名称
+            </summary>
+            <param name="dtName"></param>
+        </member>
+        <member name="T:WimMain.Common.ToolDataTable">
+            <summary>
+            DataTable工具
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.ToolDataTable.AddCache``1(System.String,System.Func{``0})">
+            <summary>
+            添加缓存
+            </summary>
+            <param name="key"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolDataTable.CreateDataTable(System.Collections.Generic.Dictionary{System.String,System.Type},System.Func{System.Collections.Generic.Dictionary{System.String,System.Type},System.Collections.Generic.Dictionary{System.String,System.Type}})">
+            <summary>
+            创建Datatable结构
+            </summary>
+            <param name="dic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolDataTable.CreateDataTable(System.Collections.Generic.Dictionary{System.String,System.Type})">
+            <summary>
+            创建Datatable结构
+            </summary>
+            <param name="dic">[列名，类型]</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolDataTable.FullDataRow``1(System.Data.DataRow,``0,System.Func{System.Data.DataRow,``0,System.Data.DataRow})">
+            <summary>
+            填充数据，
+            数据源属性应与DataRow字段名相同，或属性添加DataRowName特性，不区分大小写
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dr">待填充数据的DataRow</param>
+            <param name="obj">数据源</param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolDataTable.ToList``1(System.Data.DataTable,System.Func{System.Data.DataColumn,System.String})">
+            <summary>
+            DataTable转List
+            </summary>
+            <typeparam name="T">待转换类型</typeparam>
+            <param name="dt"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolDataTable.ToTable``1(System.Collections.Generic.List{``0},System.Func{``0,System.String})">
+            <summary>
+            List转DataTable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolDataTable.Union(System.Data.DataTable,System.Data.DataTable,System.Collections.Generic.List{System.Data.DataColumn})">
+            <summary>
+            DataTable合并
+            </summary>
+            <param name="dt">主数据表</param>
+            <param name="unionDt">待合并的数据表</param>
+            <param name="columnList">合并关联字段</param>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Common.DBHelper">
+            <summary>
+            数据库操作
+            </summary>
+        </member>
+        <member name="P:WimMain.Common.DBHelper.DbContent">
+            <summary>
+            数据库连接对象
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.#ctor(System.String)">
+            <summary>
+            数据库连接
+            </summary>
+            <param name="conStr">链接字符串</param>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.#ctor">
+            <summary>
+            数据库连接
+            </summary>
+        </member>
+        <member name="P:WimMain.Common.DBHelper.ConStr">
+            <summary>
+            链接字符串，读配置文件
+            </summary>
+        </member>
+        <member name="F:WimMain.Common.DBHelper.Conn">
+            <summary>
+            连接对象
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.GetDbContent">
+            <summary>
+            返回连接对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.GetDbContent(System.String)">
+            <summary>
+            返回连接对象
+            </summary>
+            <param name="conStr">链接字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.ExecSql``1(System.String,System.Func{System.Data.SqlClient.SqlCommand,``0},System.Data.CommandType)">
+            <summary>
+            执行SQL
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="sqlStr">SQL语句</param>
+            <param name="func">cmd操作</param>
+            <param name="type">执行的SQL类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.ExecuteNonQuery(System.String,System.Data.CommandType)">
+            <summary>
+            执行增删改
+            </summary>
+            <param name="sqlStr">SQL语句</param>
+            <param name="type">执行的SQL类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.GetDataSet(System.String,System.Data.CommandType)">
+            <summary>
+            执行查询
+            </summary>
+            <param name="sqlStr">SQL语句</param>
+            <param name="type">执行的SQL类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.GetTable(System.String,System.Int32,System.Data.CommandType)">
+            <summary>
+            执行查询
+            </summary>
+            <param name="sqlStr">SQL语句</param>
+            <param name="index">表索引</param>
+            <param name="type">执行的SQL类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.GetTable``1(System.String,System.Int32,System.Func{System.Data.DataColumn,System.String},System.Data.CommandType)">
+            <summary>
+            执行查询
+            </summary>
+            <param name="sqlStr">SQL语句</param>
+            <param name="index">表索引</param>
+            <param name="func">拓展</param>
+            <param name="type">执行的SQL类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.DBHelper.GetTranSql(System.String)">
+            <summary>
+            SQL语句在事务中执行
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Common.ToolConfig">
+            <summary>
+            配置文件操作
+            </summary>
+        </member>
+        <member name="F:WimMain.Common.ToolConfig.ConfigDic">
+            <summary>
+            配置文件字典缓存
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.ToolConfig.AddConfigDic(System.String,System.Func{System.String})">
+            <summary>
+            添加配置字典
+            </summary>
+            <param name="key"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolConfig.GetAppSetting(System.String)">
+            <summary>
+            读取配置文件appSettings
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">配置名称</param>
+            <returns>配置值</returns>
+        </member>
+        <member name="M:WimMain.Common.ToolConfig.SetAppSetting(System.String,System.Object)">
+            <summary>
+            修改配置文件appSettings
+            </summary>
+            <param name="key"></param>
+            <param name="val"></param>
+        </member>
+        <member name="M:WimMain.Common.ToolConfig.GetConStr(System.Int32)">
+            <summary>
+            返回连接字符串
+            </summary>
+            <param name="index">连接字符串索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolConfig.GetConStr(System.String)">
+            <summary>
+            返回连接字符串
+            </summary>
+            <param name="name">连接字符串名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolConfig.GetConList">
+            <summary>
+            返回连接字符串列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Common.ExpandFun">
+            <summary>
+            拓展方法
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.ExpandFun.HasItems``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            返回集合是否有值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ts"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Common.ToolFile">
+            <summary>
+            文件操作
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.GetAbsolutelyPath(System.String)">
+            <summary>
+            返回绝对路径
+            </summary>
+            <param name="path">路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.GetUpIndex(System.String,System.Int32)">
+            <summary>
+            返回上层目录
+            </summary>
+            <param name="path">路径</param>
+            <param name="index">上层层级</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.GetSuffix(System.String)">
+            <summary>
+            返回后缀名
+            </summary>
+            <param name="path">路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.CreatFile(System.String,System.String,System.Boolean)">
+            <summary>
+            创建文件
+            </summary>
+            <param name="path">文件路径</param>
+            <param name="line">行数据</param>
+            <param name="append">是否追加</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.ReadExcel(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            读取Excel文件
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.ExportExcel(System.Data.DataTable,System.String)">
+            <summary>
+            导出Excel
+            </summary>
+            <param name="dt">数据源</param>
+            <param name="path"></param>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.ExcelToTable(System.String)">
+            <summary>
+            Excel导入成Datable
+            </summary>
+            <param name="file">导入路径(包含文件名与扩展名)</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.TableToExcel(System.Data.DataTable,System.String)">
+            <summary>
+            Datable导出成Excel
+            </summary>
+            <param name="dt"></param>
+            <param name="file">导出路径(包括文件名与扩展名)</param>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.GetValueType(NPOI.SS.UserModel.ICell)">
+            <summary>
+            获取单元格类型
+            </summary>
+            <param name="cell"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.ReadWord(System.String)">
+            <summary>
+            读取Word
+            </summary>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="F:WimMain.Common.ToolFile.Lock_GenerateLocalReport">
+            <summary>
+            Lock变量
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.GenerateLocalReport(System.String,System.String,System.String,Microsoft.Reporting.WinForms.ReportParameterCollection,System.Boolean)">
+            <summary>
+            生成报表
+            </summary>
+            <param name="modelPath">模板路径</param>
+            <param name="targetPath">目标路径</param>
+            <param name="fileName">文件名称</param>
+            <param name="reportParameters">报表参数</param>
+            <param name="ignoreExists">[True:不覆盖,False:覆盖]</param>
+        </member>
+        <member name="M:WimMain.Common.ToolFile.GetRunTime(System.String,System.Action)">
+            <summary>
+            返回程序运行时间
+            </summary>
+            <param name="remark"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Common.ToolHttp">
+            <summary>
+            网络请求工具
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.ToolHttp.RequestUrl(System.String,System.String,System.String,System.String)">
+            <summary>
+            发送网络请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">请求数据</param>
+            <param name="method">请求模式</param>
+            <param name="contentType">请求头</param>
+            <returns>返回消息</returns>
+        </member>
+        <member name="T:WimMain.Common.ToolRegular">
+            <summary>
+            正则表达式
+            </summary>
+        </member>
+        <member name="P:WimMain.Common.ToolRegular._RIsAbsolutelyPath">
+            <summary>
+            是否是绝对路径
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.ToolRegular.Contains(System.String,System.String)">
+            <summary>
+            是否满足正则
+            </summary>
+            <param name="content">内容</param>
+            <param name="regStr">正则</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolRegular.GetPoint(System.String,System.String,System.Object,System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            返回所有匹配的字符串
+            </summary>
+            <param name="con">原字符串</param>
+            <param name="regex">正则表达式</param>
+            <param name="option">正则匹配项</param>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Common.ToolString">
+            <summary>
+            字符串操作
+            </summary>
+        </member>
+        <member name="M:WimMain.Common.ToolString.RemoveCharAfter(System.String,System.String,System.Boolean)">
+            <summary>
+            移除指定字符串后的字符串
+            </summary>
+            <param name="str">原字符串</param>
+            <param name="ch">节点字符串</param>
+            <param name="isContain">返回字符串中，是否包含节点字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolString.AddStrByLength(System.String,System.String,System.Int32,System.Boolean)">
+            <summary>
+            字符串补长
+            </summary>
+            <param name="str"></param>
+            <param name="ch"></param>
+            <param name="length"></param>
+            <param name="isAppend">是否向后追加[true:在字符串后追加，false:在字符串前追加]</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolString.GetLetter(System.String)">
+            <summary>
+            返回文本中的英文字母
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolString.ConvertJson(System.Object,System.Boolean)">
+            <summary>
+            对象转Json
+            </summary>
+            <param name="obj">对象</param>
+            <param name="hasNull">是否派出null值</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolString.ConvertObject``1(System.String)">
+            <summary>
+            Json转对象
+            </summary>
+            <param name="json"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolString.ConvertJsonString(System.String)">
+            <summary>
+            格式化Json
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Common.ToolString.GetDiction(System.String)">
+            <summary>
+            json转键值对
+            </summary>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.F_Main.#ctor">
+            <summary>
+            窗体入口
+            </summary>
+        </member>
+        <member name="F:WimMain.F_Main._assembly">
+            <summary>
+            获取当前程序集
+            </summary>
+        </member>
+        <member name="M:WimMain.F_Main.F_Main_Load(System.Object,System.EventArgs)">
+            <summary>
+            窗体加载时执行
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:WimMain.F_Main.cmb_Class_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            选项更改时执行，重新绑定方法列表
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:WimMain.F_Main.cmb_Fun_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            选项更改时执行，重新绑定参数列表
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:WimMain.F_Main.bt_Exec_Click(System.Object,System.EventArgs)">
+            <summary>
+            按钮单击时执行，执行选中的指定方法
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:WimMain.F_Main.BindCom``1(System.Windows.Forms.ComboBox,System.Collections.Generic.ICollection{``0},System.Func{``0,System.Boolean},System.Func{``0,WimMain.Models.ComBoxItem})">
+            <summary>
+            绑定下拉框选项
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cmb">待绑定的下拉框</param>
+            <param name="dataList">数据集</param>
+            <param name="funcWhere">过滤条件</param>
+            <param name="func">返回下拉项</param>
+        </member>
+        <member name="M:WimMain.F_Main.BindPara">
+            <summary>
+            绑定参数列表
+            </summary>
+        </member>
+        <member name="M:WimMain.F_Main.GetNote(System.String,System.String)">
+            <summary>
+            返回注释信息
+            </summary>
+            <param name="name">名称</param>
+            <param name="para">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.F_Main.GetMethodNoteSel(System.Reflection.MethodInfo)">
+            <summary>
+            返回方法注释选择
+            </summary>
+            <param name="method">方法的元数据</param>
+            <returns></returns>
+        </member>
+        <member name="F:WimMain.F_Main.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:WimMain.F_Main.Dispose(System.Boolean)">
+            <summary>
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:WimMain.F_Main.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:WimMain.Fun.BaseFun">
+            <summary>
+            所有可执行方法的父类
+            </summary>
+        </member>
+        <member name="M:WimMain.Fun.BaseFun.#ctor(WimMain.Common.DBHelper)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="P:WimMain.Fun.BaseFun.DbContent">
+            <summary>
+            数据库连接对象
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.BaseFun.CompanyID">
+            <summary>
+            用户编号
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.BaseFun.FormApplicationID">
+            <summary>
+            应用程序编号
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.BaseFun.FormID">
+            <summary>
+            表单编号
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.BaseFun.ModelPath">
+            <summary>
+            报告模板路径
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.BaseFun.Res">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.BaseFun.LogStarPath">
+            <summary>
+            日志初始路径
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.BaseFun.DataStarPath">
+            <summary>
+            数据文件初始路径
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.BaseFun.SegmentingLine">
+            <summary>
+            分割线
+            </summary>
+        </member>
+        <member name="M:WimMain.Fun.BaseFun.RunFun(System.Func{System.String,WimMain.Fun.Result})">
+            <summary>
+            运行
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.BaseFun.RunFun(System.Func{System.String,System.String,WimMain.Fun.Result})">
+            <summary>
+            运行
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.BaseFun.GetMethodName(System.Int32)">
+            <summary>
+            获得当前方法名称
+            </summary>
+            <param name="index">堆栈帧</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.BaseFun.WriteLog(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            写入日志
+            </summary>
+            <param name="logPath">日志路径</param>
+            <param name="msg">日志消息</param>
+            <param name="append">是否追加</param>
+            <param name="hasDate">是否包含时间</param>
+        </member>
+        <member name="M:WimMain.Fun.BaseFun.GetSqlParam">
+            <summary>
+            返回参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Fun.Result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.Result.Msg">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.Result.RunTime">
+            <summary>
+            运行时间，ms
+            </summary>
+        </member>
+        <member name="P:WimMain.Fun.Result.Object">
+            <summary>
+            返回对象
+            </summary>
+        </member>
+        <member name="T:WimMain.Fun.Geely">
+            <summary>
+            Geely
+            </summary>
+        </member>
+        <member name="M:WimMain.Fun.Geely.GetDirFileName(System.String,System.String)">
+            <summary>
+            获取所有文件
+            </summary>
+            <param name="dirPath">文件夹路径</param>
+            <param name="suffix">文件后缀</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.Geely.MoveFile(System.String,System.String,System.String)">
+            <summary>
+            移动文件
+            </summary>
+            <param name="logFile">日志文件</param>
+            <param name="filePath">原始文件夹路径</param>
+            <param name="targetPath">目标文件夹</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.Geely.FilterLog(System.String,System.String,System.String)">
+            <summary>
+            提取日志文件
+            </summary>
+            <param name="path">日志文件路径</param>
+            <param name="targetPath">日志提取路径</param>
+            <param name="str">包含的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.Geely.GetAllPost(System.Int32)">
+            <summary>
+            返回所有请求成功的数据
+            </summary>
+            <param name="date">几天之内</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.Geely.GetResilienceData">
+            <summary>
+            返回复原力数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Fun.GuangTie">
+            <summary>
+            广铁
+            </summary>
+        </member>
+        <member name="M:WimMain.Fun.GuangTie.GetExcelTxt(System.String,System.Int32)">
+            <summary>
+            返回Excel文本
+            </summary>
+            <param name="dirPath"></param>
+            <param name="length">被评估人信息长度</param>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Fun.KunLun">
+            <summary>
+            昆仑银行
+            </summary>
+        </member>
+        <member name="F:WimMain.Fun.KunLun.SubjectReg">
+            <summary>
+            题目正则
+            </summary>
+        </member>
+        <member name="F:WimMain.Fun.KunLun.Br">
+            <summary>
+            换行
+            </summary>
+        </member>
+        <member name="F:WimMain.Fun.KunLun.fun1Str1">
+            <summary>
+            解析Word文档
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:WimMain.Fun.KunLun.ExcludeList">
+            <summary>
+            排除词汇
+            </summary>
+        </member>
+        <member name="M:WimMain.Fun.KunLun.Fun1(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            解析题目
+            </summary>
+            <param name="file">文件路径</param>
+            <param name="isCheck">是否检查段落</param>
+            <param name="analysis">开启横向解析</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.KunLun.AnswerList(System.String)">
+            <summary>
+            返回答案列表
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.KunLun.ItemList(System.String,NPOI.XWPF.UserModel.XWPFParagraph,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            返回选项列表
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.KunLun.AnswerList(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            答案与选项匹配
+            </summary>
+            <param name="answer"></param>
+            <param name="item"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.KunLun.ReplaceSubject(System.String,System.String,System.Boolean)">
+            <summary>
+            替换题目序列
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Fun.PowerLong">
+            <summary>
+            宝龙
+            </summary>
+        </member>
+        <member name="M:WimMain.Fun.PowerLong.CreatReport(System.String)">
+            <summary>
+            创建报告
+            </summary>
+            <param name="tigerPath">目标路径</param>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Fun.ReportTest">
+            <summary>
+            报告
+            </summary>
+        </member>
+        <member name="M:WimMain.Fun.ReportTest.GetObservedList">
+            <summary>
+            返回被评估人列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.ReportTest.GetFormInfo(System.Int64)">
+            <summary>
+            返回信息
+            </summary>
+            <param name="formId">表单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.ReportTest.BindPara(System.String,Microsoft.Reporting.WinForms.ReportParameterCollection)">
+            <summary>
+            绑定报告参数
+            </summary>
+            <param name="modePath">报告地址</param>
+            <param name="col">报告参数</param>
+        </member>
+        <member name="M:WimMain.Fun.ReportTest.GetEntryInfo(System.String)">
+            <summary>
+            返回信息
+            </summary>
+            <param name="entryId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.ReportTest.CreateReport(System.String,System.String,System.Int64,System.Int64,System.String,System.Int32)">
+            <summary>
+            生成报告
+            </summary>
+            <param name="modelPath">报告模板</param>
+            <param name="tigerPath">生成地址</param>
+            <param name="formId">问卷编号</param>
+            <param name="entryId">被评估人编号</param>
+            <param name="suffix">报告格式</param>
+            <param name="maxLength">最多生成报告数，0为不限制</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.ReportTest.CheckReportIsAll(System.String,System.Int64)">
+            <summary>
+            检查报告是否全部生成
+            </summary>
+            <param name="tigerPath"></param>
+            <param name="formId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Fun.ReportTest.ReportGroup(System.String,System.String,System.Double)">
+            <summary>
+            报告分组
+            </summary>
+            <param name="tigerPath">文件夹</param>
+            <param name="group">分组条件，多个用','分割</param>
+            <param name="max">文件夹最大占用</param>
+            <returns></returns>
+        </member>
+        <member name="T:WimMain.Models.ComBoxItem">
+            <summary>
+            下拉框选项
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ComBoxItem.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ComBoxItem.Display">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="T:WimMain.Models.ExcelFormat">
+            <summary>
+            返回的Excel格式
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.ObservedDepartment">
+            <summary>
+            被评估人部门
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.ObservedName">
+            <summary>
+            被评估人姓名
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.ObservedEmail">
+            <summary>
+            被评估人邮箱
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.ObservedPhone">
+            <summary>
+            被评估人手机号码
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.Mapping">
+            <summary>
+            关系
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.Weight">
+            <summary>
+            权值
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.ObserverDepartment">
+            <summary>
+            评估人部门
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.ObserverName">
+            <summary>
+            评估人姓名
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.ObserverEmail">
+            <summary>
+            评估人邮箱
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.ExcelFormat.ObserverPhone">
+            <summary>
+            评估人手机号码
+            </summary>
+        </member>
+        <member name="T:WimMain.Models.FunPara">
+            <summary>
+            方法参数列
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.FunPara.Name">
+            <summary>
+            方法名称
+            </summary>
+        </member>
+        <member name="F:WimMain.Models.FunPara.Context">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.FunPara.UseCount">
+            <summary>
+            使用次数
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.FunPara.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.FunPara.LastUseDate">
+            <summary>
+            最后使用时间
+            </summary>
+        </member>
+        <member name="T:WimMain.Models.FunPara.FunParaContext">
+            <summary>
+            参数信息
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.FunPara.FunParaContext.Paras">
+            <summary>
+            方法参数
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.FunPara.FunParaContext.UseCount">
+            <summary>
+            使用次数
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.FunPara.FunParaContext.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.FunPara.FunParaContext.LastUseDate">
+            <summary>
+            最后使用时间
+            </summary>
+        </member>
+        <member name="T:WimMain.Models.GeelyField">
+            <summary>
+            Geely
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.cand">
+            <summary>
+            用户标识
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.instr">
+            <summary>
+            工具ID
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.pid">
+            <summary>
+            项目ID
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.valid">
+            <summary>
+            是否完成
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.Speed">
+            <summary>
+            完成度
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.isDown">
+            <summary>
+            WebService状态
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.postT">
+            <summary>
+            请求类型
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.IsSend">
+            <summary>
+            请求状态
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.firstName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.email">
+            <summary>
+            用户邮箱
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.resilience">
+            <summary>
+            2019-1-24，复原力
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.achievement">
+            <summary>
+            用户得分
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.formula">
+            <summary>
+            公式得分
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.qualified">
+            <summary>
+            胜任力得分
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.createDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:WimMain.Models.GeelyField.JobId">
+            <summary>
+            岗位ID，社招使用
+            </summary>
+        </member>
+        <member name="M:WimMain.Models.GeelyField.GetNotSendList(System.Collections.Generic.List{WimMain.Models.GeelyField},System.Func{WimMain.Models.GeelyField,System.Boolean})">
+            <summary>
+            返回未发送的数据
+            </summary>
+            <param name="list"></param>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Models.GeelyField.GetSendList(System.Collections.Generic.List{WimMain.Models.GeelyField},System.Func{WimMain.Models.GeelyField,System.Boolean})">
+            <summary>
+            返回已发送数据
+            </summary>
+            <param name="list"></param>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Models.GeelyField.Distinct(System.Collections.Generic.List{WimMain.Models.GeelyField})">
+            <summary>
+            去掉重复值
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Models.GeelyField.Format(System.Decimal,System.Int32)">
+            <summary>
+            数据五分制
+            </summary>
+            <param name="num">原始数据</param>
+            <param name="accuracy">精度</param>
+            <returns></returns>
+        </member>
+        <member name="M:WimMain.Program.Main">
+            <summary>
+            应用程序的主入口点。
+            </summary>
+        </member>
+        <member name="T:WimMain.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:WimMain.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:WimMain.Properties.Resources.Culture">
+            <summary>
+              重写当前线程的 CurrentUICulture 属性
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+    </members>
+</doc>

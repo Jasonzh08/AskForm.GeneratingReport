@@ -1,0 +1,5 @@
+/.vs/
+/WimMain/bin/Debug
+/WimMain/obj/Debug
+WimMain/Log
+WimMain/WimMain.csproj.user
